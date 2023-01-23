@@ -1,0 +1,14 @@
+server:
+  port: 8082
+---
+spring:
+  config:
+    profiles: dev
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://${MYSQL_HOST:localhost}:5432/schooldb
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
