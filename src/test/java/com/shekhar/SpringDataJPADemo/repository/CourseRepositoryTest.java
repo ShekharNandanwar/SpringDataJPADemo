@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class CourseRepositoryTest {
@@ -14,9 +16,16 @@ class CourseRepositoryTest {
     @Test
     public void createCourse(){
         Course course = Course.builder()
-                .title("Java")
+                .title("DotNet")
                 .credit("10")
                 .build();
         courseRepository.save(course);
+        System.out.println("course = " + course);
+        
     }
-}
+    @Test
+    public void printCourse(){
+        List<Course> courses = courseRepository.findAll();
+        System.out.println("courses = " + courses);
+    }
+} 
