@@ -81,4 +81,10 @@ class StudentRepositoryTest {
         List<Student> student = studentRepository.getStudentNameByEmail("shekhar15jan@gmail.com");
         System.out.println("student = " + student);
     }*/
+
+    @Test
+    public void whenStudentEmail_thenUpdateFirstName(){
+        int updatedId = studentRepository.updateStudentByEmailId("Shekhar", "shekhar15jan@gmail.com");
+        System.out.println("updatedId = " + updatedId);
+    }
 }
