@@ -1,8 +1,6 @@
 package com.shekhar.SpringDataJPADemo.repository;
 
-import com.shekhar.SpringDataJPADemo.entity.Course;
-import com.shekhar.SpringDataJPADemo.entity.CourseMaterial;
-import com.shekhar.SpringDataJPADemo.entity.Teacher;
+import com.shekhar.SpringDataJPADemo.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -78,5 +76,29 @@ class CourseRepositoryTest {
         System.out.println("courses = " + courses);
     }
 
-
+    @Test
+    public void saveCourseWithStudentandTeacher(){
+        Teacher teacher = Teacher.builder()
+                .firstName("Pravin")
+                .lastName("Sonawane")
+                .build();
+        Guardian guardian = Guardian.builder()
+                .name("Pratik")
+                .email("pratik@gmail.com")
+                .mobile("999999999")
+                .build();
+        Student student = Student.builder()
+                .firstName("Ganesh")
+                .lastName("Vichare")
+                .emailId("ganesh@gmail.com")
+                .guardian(guardian)
+                .build();
+        Course course = Course.builder()
+                .title("AI")
+                .credit("12")
+                .teacher(teacher)
+                .students(List.of(student))
+                .build();
+        courseRepository.save(course);
+    }
 }
