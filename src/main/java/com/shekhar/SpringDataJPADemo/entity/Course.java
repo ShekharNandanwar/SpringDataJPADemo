@@ -13,7 +13,7 @@ import lombok.*;
 )
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "teacher")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -37,4 +37,15 @@ public class Course {
             mappedBy = "course"
     )
     private CourseMaterial courseMaterial;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            optional = false
+    )
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
 }
